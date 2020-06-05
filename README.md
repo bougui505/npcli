@@ -34,7 +34,7 @@ $ paste =(seq 10) =(seq 11 20) | np 'mu=data.mean(axis=1);print(mu)'
 14
 15
 ```
-The python `print` command has been overwritten to print results as a shell friendly format
+The python `print` command has been overwritten to print results as a shell friendly format. Therefore to print two variables you have to invoke the \'print\' command for each:
 ```
 $ paste =(seq 10) =(seq 11 20) | np 'print(data.min());print(data.max())'
 
