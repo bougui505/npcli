@@ -8,6 +8,10 @@
 import sys
 import numpy as np
 
+
+def print(indata):
+    np.savetxt(sys.stdout, indata, fmt='%.18g')
+
+
 data = np.loadtxt(sys.stdin, dtype=np.int)  # See: https://stackoverflow.com/a/8192426/1679629
 exec(sys.argv[1])
-print(data)
