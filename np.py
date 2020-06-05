@@ -10,7 +10,10 @@ import numpy as np
 
 
 def print(indata):
-    np.savetxt(sys.stdout, indata, fmt='%.18g')
+    if np.isscalar(indata):
+        sys.stdout.write(f'{indata}\n')
+    else:
+        np.savetxt(sys.stdout, indata, fmt='%.18g')
 
 
 data = np.loadtxt(sys.stdin)  # See: https://stackoverflow.com/a/8192426/1679629
