@@ -1,5 +1,5 @@
 # npcli
-Feed stdin data to a numpy array (default variable name is data) and apply arbitrary numpy operation on it and print the result on stdout.
+Feed stdin data to a numpy array (default variable name is `data`) and apply arbitrary numpy operation on it and print the result on stdout.
 ```
 $ paste =(seq 10) =(seq 11 20) | ./np.sh 'print(data)'
 
@@ -33,4 +33,11 @@ $ paste =(seq 10) =(seq 11 20) | np 'mu=data.mean(axis=1);print(mu)'
 13
 14
 15
+```
+The python `print` command has been overwritten to print results as a shell friendly format
+```
+$ paste =(seq 10) =(seq 11 20) | np 'print(data.min());print(data.max())'
+
+1.0
+20.0
 ```
