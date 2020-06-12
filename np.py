@@ -7,6 +7,14 @@
 
 import sys
 import numpy as np
+try:
+    import seaborn as sns
+except ImportError:
+    pass
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    pass
 
 
 def print(indata):
