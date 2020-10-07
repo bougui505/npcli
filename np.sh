@@ -6,4 +6,10 @@
 # 2020-06-05 15:33:23 (UTC+0200)
 
 DIRSCRIPT="$(dirname "$(readlink -f "$0")")"
-"$DIRSCRIPT/np.py" "$1"
+if [ -p /dev/stdin ]; then
+    # echo 'Pipe'
+    "$DIRSCRIPT/np.py" "-c" "$1"
+else
+    # echo 'No pipe'
+    "$DIRSCRIPT/np.py" "--nopipe" "-c" "$1"
+fi
