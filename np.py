@@ -37,7 +37,7 @@ def print(indata):
     if np.isscalar(indata):
         sys.stdout.write(f'{indata}\n')
     else:
-        np.savetxt(sys.stdout, indata, fmt='%s')
+        np.savetxt(sys.stdout, indata, fmt='%s', delimiter='\t')
 
 
 def format_line(line):
