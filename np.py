@@ -30,6 +30,10 @@ args = parser.parse_args()
 
 
 def print(indata):
+    try:
+        indata[indata == None] = '_'
+    except TypeError:
+        pass
     if np.isscalar(indata):
         sys.stdout.write(f'{indata}\n')
     else:
