@@ -1,43 +1,43 @@
 # npcli
-Feed stdin data to a numpy array (default variable name is `data`) and apply arbitrary numpy operation on it and print the result on stdout.
+Feed stdin data to a numpy array (default variable name is `A`) and apply arbitrary numpy operation on it and print the result on stdout.
 ```
-$ paste =(seq 10) =(seq 11 20) | ./np.sh 'print(data)'
+$ paste =(seq 10) =(seq 11 20) | ./np.sh 'print(A)'
 
-1 11
-2 12
-3 13
-4 14
-5 15
-6 16
-7 17
-8 18
-9 19
-10 20
+1	11
+2	12
+3	13
+4	14
+5	15
+6	16
+7	17
+8	18
+9	19
+10	20
 ```
 ```
-$ paste =(seq 10) =(seq 11 20) | ./np.sh 'mu=data.mean(axis=0);print(mu)'
+$ paste =(seq 10) =(seq 11 20) | ./np.sh 'mu=A.mean(axis=0);print(mu)'
 
 5.5
 15.5
 ```
 ```
-$ paste =(seq 10) =(seq 11 20) | np 'mu=data.mean(axis=1);print(mu)'
+$ paste =(seq 10) =(seq 11 20) | np 'mu=A.mean(axis=1);print(mu)'
 
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
+6.0
+7.0
+8.0
+9.0
+10.0
+11.0
+12.0
+13.0
+14.0
+15.0
 ```
 The python `print` command has been overwritten to print results as a shell friendly format. Therefore to print two variables you have to invoke the \'print\' command for each:
 ```
-$ paste =(seq 10) =(seq 11 20) | np 'print(data.min());print(data.max())'
+$ paste =(seq 10) =(seq 11 20) | np 'print(A.min());print(A.max())'
 
-1.0
-20.0
+1
+20
 ```
