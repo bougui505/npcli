@@ -57,5 +57,5 @@ if not args.nopipe:
             line = format_line(line)
             data.append(line)
     data = pd.DataFrame(data)
-
+data = np.asarray(data)
 exec(args.cmd)
