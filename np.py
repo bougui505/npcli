@@ -54,12 +54,12 @@ def format_line(line):
 
 if not args.nopipe:
     # Reading from pipe
-    # a = np.genfromtxt(sys.stdin, dtype=str)  # See: https://stackoverflow.com/a/8192426/1679629
-    a = []
+    # A = np.genfromtxt(sys.stdin, dtype=str)  # See: https://stackoverflow.com/a/8192426/1679629
+    A = []
     with sys.stdin as inpipe:
         for line in inpipe:
             line = format_line(line)
-            a.append(line)
-    a = pd.DataFrame(a)
-a = np.asarray(a)
+            A.append(line)
+    A = pd.DataFrame(A)
+A = np.asarray(A)
 exec(args.cmd)
