@@ -8,6 +8,11 @@
 import sys
 import argparse
 import numpy as np
+import pandas as pd
+
+pd.set_option('display.max_rows', None)
+# pd.set_option('display.max_columns', None)
+
 try:
     import seaborn as sns
 except ImportError:
@@ -28,10 +33,29 @@ def print(indata):
     if np.isscalar(indata):
         sys.stdout.write(f'{indata}\n')
     else:
-        np.savetxt(sys.stdout, indata, fmt='%.18g')
+        np.savetxt(sys.stdout, indata, fmt='%s')
+
+
+def format_line(line):
+    line = line.split()
+    outline = []
+    for e in line:
+        try:
+            e = int(float(e)) if int(float(e)) == float(e) else float(e)
+        except ValueError:
+            pass
+        outline.append(e)
+    return outline
 
 
 if not args.nopipe:
     # Reading from pipe
-    data = np.loadtxt(sys.stdin)  # See: https://stackoverflow.com/a/8192426/1679629
+    # data = np.genfromtxt(sys.stdin, dtype=str)  # See: https://stackoverflow.com/a/8192426/1679629
+    data = []
+    with sys.stdin as inpipe:
+        for line in inpipe:
+            line = format_line(line)
+            data.append(line)
+    data = pd.DataFrame(data)
+
 exec(args.cmd)
