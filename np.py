@@ -61,5 +61,5 @@ if not args.nopipe:
             line = format_line(line)
             A.append(line)
     A = pd.DataFrame(A)
-A = np.asarray(A)
+    A = np.asarray(A)
 exec(args.cmd)
