@@ -57,6 +57,7 @@ $ paste =(seq 10) =(seq 11 20) | np 'print(A.min());print(A.max())'
 1
 20
 ```
+Change the delimiter with the -d option
 ```
 $ paste -d ',' =(seq 10) =(seq 11 20) | np -d',' 'mu=A.mean(axis=0);print(mu)'
 
