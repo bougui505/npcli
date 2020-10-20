@@ -35,10 +35,15 @@ def print(indata):
         indata[indata == None] = '_'
     except (TypeError, ValueError):
         pass
-    if np.isscalar(indata):
-        sys.stdout.write(f'{indata}\n')
+    if args.delimiter is None:
+        d = ' '
     else:
-        np.savetxt(sys.stdout, indata, fmt='%s', delimiter='\t')
+        d = args.delimiter
+    if indata.ndim == 1:
+        sys.stdout.write(f'{d.join([str(e) for e in indata])}\n')
+    elif indata.ndim == 2:
+        for line in indata:
+            sys.stdout.write(f'{d.join([str(e) for e in line])}\n')
 
 
 def format_line(line):
