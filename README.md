@@ -1,7 +1,7 @@
 # npcli
 Feed stdin data to a numpy array (default variable name is `A`) and apply arbitrary numpy operation on it and print the result on stdout.
 ```
-$ paste =(seq 10) =(seq 11 20) | ./np.sh 'print(A)'
+$ paste =(seq 10) =(seq 11 20) | np 'print(A)'
 
 1	11
 2	12
@@ -15,7 +15,7 @@ $ paste =(seq 10) =(seq 11 20) | ./np.sh 'print(A)'
 10	20
 ```
 ```
-$ paste =(seq 10) =(seq 11 20) | ./np.sh 'mu=A.mean(axis=0);print(mu)'
+$ paste =(seq 10) =(seq 11 20) | np 'mu=A.mean(axis=0);print(mu)'
 
 5.5
 15.5
