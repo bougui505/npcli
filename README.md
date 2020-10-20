@@ -1,6 +1,22 @@
 # npcli
 Feed stdin data to a numpy array (default variable name is `A`) and apply arbitrary numpy operation on it and print the result on stdout.
 ```
+$ np -h
+
+usage: np [-h] [--nopipe] [-d DELIMITER] cmd
+
+Using python and numpy from the Shell
+
+positional arguments:
+  cmd                   Command to run
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --nopipe              Not reading from pipe
+  -d DELIMITER, --delimiter DELIMITER
+                        Delimiter to use
+```
+```
 $ paste =(seq 10) =(seq 11 20) | np 'print(A)'
 
 1	11
@@ -40,4 +56,10 @@ $ paste =(seq 10) =(seq 11 20) | np 'print(A.min());print(A.max())'
 
 1
 20
+```
+```
+$ paste -d ',' =(seq 10) =(seq 11 20) | np -d',' 'mu=A.mean(axis=0);print(mu)'
+
+5.5
+15.5
 ```

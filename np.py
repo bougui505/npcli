@@ -25,6 +25,7 @@ except ImportError:
 
 parser = argparse.ArgumentParser(description='Using python and numpy from the Shell')
 parser.add_argument('--nopipe', help='Not reading from pipe', default=False, action='store_true')
+parser.add_argument('-d', '--delimiter', help='Delimiter to use', type=str)
 parser.add_argument('cmd', help='Command to run', type=str)
 args = parser.parse_args()
 
@@ -41,7 +42,7 @@ def print(indata):
 
 
 def format_line(line):
-    line = line.split()
+    line = line.split(args.delimiter)
     outline = []
     for e in line:
         try:
