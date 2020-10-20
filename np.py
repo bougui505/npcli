@@ -25,7 +25,7 @@ except ImportError:
 
 parser = argparse.ArgumentParser(description='Using python and numpy from the Shell')
 parser.add_argument('--nopipe', help='Not reading from pipe', default=False, action='store_true')
-parser.add_argument('-c', '--cmd', help='Command to run', type=str)
+parser.add_argument('cmd', help='Command to run', type=str)
 args = parser.parse_args()
 
 
