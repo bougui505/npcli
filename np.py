@@ -44,6 +44,8 @@ def print(indata):
     elif indata.ndim == 2:
         for line in indata:
             sys.stdout.write(f'{d.join([str(e) for e in line])}\n')
+    elif indata.ndim == 0:
+        sys.stdout.write(str(indata) + '\n')
 
 
 def format_line(line):
