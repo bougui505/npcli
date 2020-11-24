@@ -31,7 +31,7 @@ parser.add_argument('cmd', help='Command to run', type=str)
 args = parser.parse_args()
 
 
-def print(indata):
+def print_(indata):
     try:
         indata[indata == None] = '_'
     except (TypeError, ValueError):
