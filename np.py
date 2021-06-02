@@ -53,6 +53,7 @@ def format_line(line):
     line = line.split(args.delimiter)
     outline = []
     for e in line:
+        e = e.strip()
         try:
             e = int(float(e)) if int(float(e)) == float(e) else float(e)
         except ValueError:
