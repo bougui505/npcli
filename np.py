@@ -27,6 +27,7 @@ except ImportError:
 parser = argparse.ArgumentParser(description='Using python and numpy from the Shell')
 parser.add_argument('--nopipe', help='Not reading from pipe', default=False, action='store_true')
 parser.add_argument('-d', '--delimiter', help='Delimiter to use', type=str)
+parser.add_argument('--float', dest='dofloat', action='store_true', help='Convert all to float. Put np.nan on strings')
 parser.add_argument('cmd', help='Command to run', type=str)
 args = parser.parse_args()
 
@@ -72,4 +73,6 @@ if not args.nopipe:
             A.append(line)
     A = pd.DataFrame(A)
     A = np.asarray(A)
+    if args.dofloat:
+        A = np.asarray(A, dtype=float)
 exec(args.cmd)
